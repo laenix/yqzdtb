@@ -15,7 +15,7 @@ golang
 
 >go get github.com/PuerkitoBio/goquery
 ### 使用
->go init yqzdtd
+>go mod init yqzdtd
 
 >go build
 
