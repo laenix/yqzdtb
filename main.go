@@ -17,7 +17,7 @@ func main() {
 }
 func Autoreport() {
 	c := cron.New()
-	c.AddFunc("* 01 8 * * *", util.Report) //每天八点零一自动填报
+	c.AddFunc("* 01 8 * * *", Report) //每天八点零一自动填报
 	c.Start()
 }
 func Report() {
