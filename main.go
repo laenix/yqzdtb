@@ -5,16 +5,26 @@ import (
 	"errors"
 	"net/http"
 	"strings"
-
+	"github.com/robfig/cron"
 	"github.com/PuerkitoBio/goquery"
 )
 
 func main() {
-	cookie := Getcookie("学号", "身份证号码后六位")
+	ar wg sync.WaitGroup //用于等待所有协程都完成
+	wg.Add(1)
+	go Autoreport()
+	wg.Wait()
+}
+func Autoreport() {
+	c := cron.New()
+	c.AddFunc("* 01 8 * * *", util.Report) //每天八点零一自动填报
+	c.Start()
+}
+func Report() {
+	cookie := Getcookie("学号", "身份证号码后六位") //这里更换成你的学号和密码
 	postdata := Getinfo(cookie)
 	Postdata(cookie, postdata)
 }
-
 func noRedirect(req *http.Request, via []*http.Request) error {
 	return errors.New("Don't redirect!")
 }
