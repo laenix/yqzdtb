@@ -11,11 +11,12 @@ golang
 
 >export GOPROXY=https://goproxy.io
 
+### 使用
+>go mod init yqzdtd
+
 >go get github.com/robfig/cron
 
 >go get github.com/PuerkitoBio/goquery
-### 使用
->go mod init yqzdtd
 
 >go build
 
