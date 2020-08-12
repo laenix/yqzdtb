@@ -10,7 +10,7 @@ import (
 )
 
 func main() {
-	ar wg sync.WaitGroup //用于等待所有协程都完成
+	var wg sync.WaitGroup //用于等待所有协程都完成
 	wg.Add(1)
 	go Autoreport()
 	wg.Wait()
