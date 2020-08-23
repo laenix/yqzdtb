@@ -10,16 +10,10 @@ import (
 )
 
 func main() {
-	var wg sync.WaitGroup //用于等待所有协程都完成
-	wg.Add(1)
-	go Autoreport()
-	wg.Wait()
+	Report
+	time.Sleep(time.Duration(24)*time.Hour)
 }
-func Autoreport() {
-	c := cron.New()
-	c.AddFunc("* 01 8 * * *", Report) //每天八点零一自动填报
-	c.Start()
-}
+
 func Report() {
 	cookie := Getcookie("学号", "身份证号码后六位") //这里更换成你的学号和密码
 	postdata := Getinfo(cookie)
